@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class SavaManager : MonoBehaviour {
 
+    /* 
+     *  是否加密，默认为否
+     *  保存路径
+     *  保存时间信息的sav文件名
+     *  保存盒子信息的sav文件名
+    
+     *  游戏设置
+     *  时间控制器
+     *  
+     */
     public bool bIsEcypt=false;
     private string SavePath = "./Save/";
     public string timeControllerSaveName = "TimeController.sav";
