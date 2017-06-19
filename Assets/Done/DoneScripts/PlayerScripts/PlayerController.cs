@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
-    // 走着走着就开始飘了…………
-
     private Animator m_Animator;
     private Locomotion m_Locomotion;
     private float m_Speed;
