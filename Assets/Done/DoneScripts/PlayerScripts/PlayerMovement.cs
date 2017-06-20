@@ -6,8 +6,6 @@ public class PlayerMovement : MonoBehaviour {
 
     private Animator anim;              // Reference to the animator component.
     private DoneHashIDs hash;			// Reference to the HashIDs.
-    private float m_Speed;
-    private float m_Direction = 0;
 
     public float speedDampTime = 0.1f;
     public float directionDampTime = 0.1f;
@@ -50,10 +48,7 @@ public class PlayerMovement : MonoBehaviour {
             Vector3 axis = Vector3.Cross(transform.forward, worldDir);
             direction = Vector3.Angle(transform.forward, worldDir) / 180.0f * (axis.y < 0 ? -1 : 1);
         }
-
-        m_Speed = speed;
-        m_Direction = direction;
-        UpdateDampTime(m_Speed * 6, m_Direction * 180, speedDampTime, directionDampTime);
+        UpdateDampTime(speed * 6, direction * 180, speedDampTime, directionDampTime);
     }
 
     // 根据动画状态更新动画参数值
