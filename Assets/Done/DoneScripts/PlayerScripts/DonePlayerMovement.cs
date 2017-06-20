@@ -8,7 +8,7 @@ public class DonePlayerMovement : MonoBehaviour
 	public float speedDampTime = 0.1f;	// The damping for the speed parameter
     public float targetSpeed=5.5f;
 	
-	
+
 	private Animator anim;				// Reference to the animator component.
 	private DoneHashIDs hash;			// Reference to the HashIDs.
     private float MaxSpeed=5.5f;
@@ -45,7 +45,7 @@ public class DonePlayerMovement : MonoBehaviour
 		bool shout = Input.GetButtonDown("Attract");
 		
 		// Set the animator shouting parameter.
-		anim.SetBool(hash.shoutingBool, shout);
+		// anim.SetBool(hash.shoutingBool, shout);
 		
 		AudioManagement(shout);
 
@@ -59,7 +59,7 @@ public class DonePlayerMovement : MonoBehaviour
 	void MovementManagement (float horizontal, float vertical, bool sneaking)
 	{
 		// Set the sneaking parameter to the sneak input.
-		anim.SetBool(hash.sneakingBool, sneaking);
+		// anim.SetBool(hash.sneakingBool, sneaking);
 		
 		// If there is some axis input...
 		if(horizontal != 0f || vertical != 0f)

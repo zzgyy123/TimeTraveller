@@ -8,7 +8,6 @@ public class DoneHashIDs : MonoBehaviour
 	public int locomotionState;
 	public int shoutState;
 	public int deadBool;
-	public int speedFloat;
 	public int sneakingBool;
 	public int shoutingBool;
 	public int playerInSightBool;
@@ -16,9 +15,12 @@ public class DoneHashIDs : MonoBehaviour
 	public int aimWeightFloat;
     public int angularSpeedFloat;
 	public int openBool;
-	
-	
-	void Awake ()
+
+    public int speedFloat;
+    public int directionFloat;
+
+
+    void Awake ()
 	{
 		dyingState = Animator.StringToHash("Base Layer.Dying");
 		locomotionState = Animator.StringToHash("Base Layer.Locomotion");
@@ -32,5 +34,8 @@ public class DoneHashIDs : MonoBehaviour
 		aimWeightFloat = Animator.StringToHash("AimWeight");
         angularSpeedFloat = Animator.StringToHash("AngularSpeed");
 		openBool = Animator.StringToHash("Open");
-	}
+
+        speedFloat = Animator.StringToHash("Speed");
+        directionFloat = Animator.StringToHash("Direction");
+    }
 }

@@ -1,0 +1,8 @@
+一份简单的目录说明
+Done是最原始版本场景的所需文件，checkpi（健平）把新增脚本放进DoneScripts/PlayerScripts里了；
+TestAnim是美术大大放美术资源的文件，包括一些测试模型的场景
+Colr也是美术资源，主要是场景资源
+其他文件都是stealth案例资源，因为当初最原始版本就是用这些的
+
+我提议目录可以不用改，但stealth资源最好在每个目录下再新增一个stealth文件夹丢进去
+还是说新增一个TimeTravller文件夹，重新组织整理资源，丢进去？
