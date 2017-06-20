@@ -26,7 +26,7 @@ public class DoneLastPlayerSighting : MonoBehaviour
 		mainLight = GameObject.FindGameObjectWithTag(DoneTags.mainLight).GetComponent<Light>();
 		
 		// Setup the reference to the additonal audio source.
-		panicAudio = transform.FindChild("secondaryMusic").GetComponent<AudioSource>();
+		panicAudio = transform.Find("secondaryMusic").GetComponent<AudioSource>();
 		
 		// Find an array of the siren gameobjects.
 		GameObject[] sirenGameObjects = GameObject.FindGameObjectsWithTag(DoneTags.siren);
