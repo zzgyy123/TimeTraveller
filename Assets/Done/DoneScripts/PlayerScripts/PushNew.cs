@@ -82,6 +82,7 @@ public class PushNew : MonoBehaviour
 
         // 只有当处于pushingState且按着W键时，人物才会移动
         // 不然处于pushingState不按W键的话就脱离
+        nowState = anim.GetCurrentAnimatorStateInfo(0);
         if (nowState.fullPathHash == hash.pushingState)
         {
             if (vertical > 0.01f)
@@ -129,6 +130,17 @@ public class PushNew : MonoBehaviour
         }
     }
 
+    // 本来是只有OnTriggerStay的，但这要求箱子大部分进入Box Collider(即角色正对箱子)
+    // 为了灵敏些(角色可以斜着推)，就加上了
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Box")
+        {
+            box = other;
+            hitBox = true;
+            anim.SetBool(hash.hitBoxBool, hitBox);
+        }
+    }
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Box")
