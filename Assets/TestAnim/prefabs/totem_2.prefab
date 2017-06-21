@@ -19,6 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4290347816156684}
+  - component: {fileID: 54133311667823624}
+  - component: {fileID: 65044119395359428}
   m_Layer: 0
   m_Name: totem_2
   m_TagString: Untagged
@@ -103,7 +105,7 @@ GameObject:
   - component: {fileID: 64655712243364016}
   m_Layer: 0
   m_Name: pCube4
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,8 +117,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1108361084170398}
   m_LocalRotation: {x: -0, y: 0.82570183, z: -0, w: 0.5641068}
-  m_LocalPosition: {x: -6.4, y: 2.3745576e-16, z: -66.6}
-  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
+  m_LocalPosition: {x: -17.2, y: 0.12, z: -109}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 4751340056960148}
   - {fileID: 4391208734330708}
@@ -308,6 +310,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1698341264376066}
   m_Mesh: {fileID: 4300000, guid: 393d35704f9e00249bff4df4b596beca, type: 3}
+--- !u!54 &54133311667823624
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1108361084170398}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!64 &64655712243364016
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -319,6 +336,18 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 1
-  m_InflateMesh: 1
+  m_InflateMesh: 0
   m_SkinWidth: 0.5
   m_Mesh: {fileID: 4300000, guid: c7c376fbf0fa0634ea3e5fe86fd728a4, type: 3}
+--- !u!65 &65044119395359428
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1108361084170398}
+  m_Material: {fileID: 13400000, guid: 7260e4c51f9c9cc4e853e8dcf8a76ace, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
