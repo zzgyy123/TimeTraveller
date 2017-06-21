@@ -27,6 +27,9 @@ public class Push : MonoBehaviour
     bool pushing;
     float vertical;
 
+	private Rigidbody body; // current hit object (assume there is only one)
+	private GameObject hitObj; // current hit object (assume there is only one)
+
     // 推动力
     public float pushPower = 2.0f;
 
@@ -48,29 +51,22 @@ public class Push : MonoBehaviour
         // 获取当前动画状态
         // 判断当前是否为pushing状态
         push = animator.GetBool("Push");
-        vertical = Input.GetAxis("Vertical");
+		vertical = Input.GetAxis("Vertical");
         state = animator.GetCurrentAnimatorStateInfo(0);
         bool pushing = state.IsName("Pushing");
 
-        // 按下鼠标左键，若切换push变量
-        if (Input.GetMouseButton(0))
-        {
-            if (!push)
-            {
-                push = true;              
-            }
-            else
-            {
-                push = false;
-               // if (pushing)
-                 //   animator.SetBool("HitBox", false);
-            }
-            animator.SetBool("Push", push);
-        }
-
+        // 按住某个键时，若切换push变量
+		if (Input.GetMouseButtonDown(0)) {
+			push = true;              
+			animator.SetBool("Push", push);
+		}
+		if (Input.GetMouseButtonUp (0)) {
+			push = false;
+			animator.SetBool("Push", push);
+		}
         // 只有当处于pushing状态且按着W键时，人物才会移动
-        if (pushing && (vertical > 0.0f))
-            CharacterPushing();
+        //if (push && (vertical > 0.0f))
+        //    CharacterPushing();
     }
 
     // 此函数于CharacterController碰到一个可执行移动的碰撞器时被调用
@@ -80,7 +76,7 @@ public class Push : MonoBehaviour
         AnimatorStateInfo nowState = animator.GetCurrentAnimatorStateInfo(0);
         bool pushing = nowState.IsName("Pushing");
 
-        Rigidbody body = hit.collider.attachedRigidbody;
+        body = hit.collider.attachedRigidbody;
         if (body == null || body.isKinematic)
         {
             hitBox = false;
@@ -96,8 +92,8 @@ public class Push : MonoBehaviour
         // 有个小瑕疵是，当玩家碰撞到box后不论什么状态，HitBox参数仍为true
         // 这样就可以产生空推现象，玩家可凭空进入pushing状态并可以向前推
         // 除非玩家碰到另一个不是box的碰撞体,改变HitBox参数
-        GameObject hitObj = hit.gameObject;
-        if (hitObj.tag == "Box")
+        hitObj = hit.gameObject;
+		if (hitObj.CompareTag("Box"))
         {
             hitBox = true;
             animator.SetBool("HitBox", hitBox);
@@ -110,9 +106,9 @@ public class Push : MonoBehaviour
         }
 
         // 同上，改变箱子的位置
-        if (pushing && (vertical > 0.0f))
+        if (push && (vertical > 0.0f))
         {
-            // CharacterPushing(); // 不知道为什么，两个移动放在一起，就推不了了
+            CharacterPushing(); // 不知道为什么，两个移动放在一起，就推不了了
             Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
             body.velocity = pushDir * pushPower;
         }       
@@ -121,6 +117,11 @@ public class Push : MonoBehaviour
     void CharacterPushing()
     {
         Vector3 moveDir = transform.forward * vertical;
-        characterController.Move(moveDir * Time.deltaTime);
+		if (hitBox && hitObj != null) {
+			body.MovePosition (body.position + moveDir * Time.deltaTime);
+			Debug.Log (body.position + "|" + moveDir);
+		}
+		characterController.Move(moveDir * Time.deltaTime);
+
     }
 }
